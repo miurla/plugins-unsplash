@@ -1,0 +1,107 @@
+openapi: 3.0.1
+info:
+  title: Unsplash Plugin API
+  version: 1.0.0
+servers:
+  - url: http://localhost:5003
+paths:
+  /search:
+    get:
+      summary: Search for images using Unsplash API
+      operationId: searchImages
+      parameters:
+        - in: query
+          name: query
+          schema:
+            type: string
+          description: The search query for images
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: The page number for search results
+      responses:
+        "200":
+          description: Successfully fetched images
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        urls:
+                          type: object
+                          properties:
+                            raw:
+                              type: string
+                            full:
+                              type: string
+                            regular:
+                              type: string
+                            small:
+                              type: string
+                            thumb:
+                              type: string
+                        alt_description:
+                          type: string
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+components:
+  schemas:
+    Image:
+      type: object
+      properties:
+        id:
+          type: string
+        urls:
+          type: object
+          properties:
+            raw:
+              type: string
+            full:
+              type: string
+            regular:
+              type: string
+            small:
+              type: string
+            thumb:
+              type: string
+        alt_description:
+          type: string
+  responses:
+    SuccessfulResponse:
+      description: Successfully fetched images
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              results:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Image"
+    BadRequest:
+      description: Bad Request
+    Unauthorized:
+      description: Unauthorized
+    Forbidden:
+      description: Forbidden
+    NotFound:
+      description: Not Found
+    InternalServerError:
+      description: Internal Server Error

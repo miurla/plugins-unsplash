@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Unsplash Plugin (Unofficial)",
+  "name_for_model": "unsplash",
+  "description_for_human": "Plugin for searching and displaying stock photos from Unsplash.",
+  "description_for_model": "Plugin for searching and displaying stock photos from Unsplash.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "http://localhost:5003/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "http://localhost:5003/logo.png",
+  "contact_email": "legal@example.com",
+  "legal_info_url": "http://example.com/legal"
+}
